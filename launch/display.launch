@@ -1,0 +1,35 @@
+<!--launch>
+  <arg default="$(find wheel_robot)/urdf/wheel_robot.xacro" name="model"/>
+  <param command="$(find xacro)/xacro $(arg model)" name="robot_description"/>
+  <node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find wheel_robot)/rviz/urdf.rviz" />
+</launch-->
+
+
+
+
+
+<launch>
+
+  <arg default="$(find wheel_robot)/urdf/wheel_robot.xacro" name="model"/>
+  <arg default="$(find wheel_robot)/navigation/rviz/wheel_robot.rviz" name="rviz"/>
+
+  <param command="$(find xacro)/xacro $(arg model)" name="robot_description"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <node args="-d $(arg rviz)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+
+</launch>

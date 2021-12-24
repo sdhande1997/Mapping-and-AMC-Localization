@@ -1,0 +1,23 @@
+<launch>
+    <arg name="open_rviz" default="false"/>
+    <arg name="move_forward_only" default="false"/>
+    <arg name="map_file" default="$(find wheel_robot)/navigation/maps/home.yaml"/>
+
+    <!--Map Server-->
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+    <!--amcl file-->
+    <include file="$(find wheel_robot)/navigation/launch/amcl.launch"/>
+
+    <!--move base-->
+    <include file="$(find wheel_robot)/navigation/launch/move_base.launch">
+        <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+    </include>
+
+    <!--Rviz-->
+    <group if="$(arg open_rviz)">
+        <node pkg="rviz" name="rviz" type="rviz" required="true"
+               args="-d $(find wheel_robot)/navigation/rviz/wheel_robot.rviz"/>
+    </group>
+
+</launch>

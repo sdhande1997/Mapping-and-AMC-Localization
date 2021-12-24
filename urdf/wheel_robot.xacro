@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find wheel_robot)/gazebo/wheel_robot_materials.gazebo" />
+<xacro:include filename="$(find wheel_robot)/gazebo/wheel_robot_physics.gazebo" />
+<xacro:include filename="$(find wheel_robot)/gazebo/wheel_robot_plugins.gazebo" />
+
+
+<!-- <link name="dummy">
+   </link>
+
+<joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="body"/>
+</joint> -->
+
+<link
+  name="body">
+  <inertial>
+    <origin
+      xyz="0.00345845448617112 1.27437082477622E-07 0.0114321781136311"
+      rpy="0 0 0" />
+    <mass
+      value="0.0900071946882429" />
+    <inertia
+      ixx="4.90631252188324E-05"
+      ixy="-3.71280927313851E-10"
+      ixz="3.11865416550059E-06"
+      iyy="9.92493244541927E-05"
+      iyz="5.34357625296012E-10"
+      izz="0.000130457547159725" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/body.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/body.STL" />
+    </geometry>
+  </collision>
+</link>
+<link
+  name="wheel_L1">
+  <inertial>
+    <origin
+      xyz="-2.6099E-07 3.4456E-05 0.030308"
+      rpy="0 0 0" />
+    <mass
+      value="0.011427" />
+    <inertia
+      ixx="9.9372E-07"
+      ixy="-8.0514E-16"
+      ixz="-7.0822E-13"
+      iyy="9.9372E-07"
+      iyz="9.3503E-11"
+      izz="1.076E-06" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_L1.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.79216 0.81961 0.93333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_L1.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="wheel_LJ1"
+  type="continuous">
+  <origin
+    xyz="-0.0275 0.005 0.013"
+    rpy="-1.5697 0.00028247 0" />
+  <parent
+    link="body" />
+  <child
+    link="wheel_L1" />
+  <axis
+    xyz="0 0 1" />
+</joint>
+<link
+  name="wheel_L2">
+  <inertial>
+    <origin
+      xyz="3.46944695195361E-18 0 0.0303082888568348"
+      rpy="0 0 0" />
+    <mass
+      value="0.0114267079612173" />
+    <inertia
+      ixx="9.93716942507504E-07"
+      ixy="-3.70086205075385E-23"
+      ixz="1.27241181373739E-17"
+      iyy="9.93716942507503E-07"
+      iyz="1.1512928325542E-17"
+      izz="1.07596376943681E-06" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_L2.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_L2.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="wheel_LJ2"
+  type="continuous">
+  <origin
+    xyz="0.0275 0.005 0.013"
+    rpy="-1.5708 0 0" />
+  <parent
+    link="body" />
+  <child
+    link="wheel_L2" />
+  <axis
+    xyz="0 0 1" />
+</joint>
+<link
+  name="wheel_R1">
+  <inertial>
+    <origin
+      xyz="2.46330733588707E-16 -1.73472347597681E-18 -0.030308288856835"
+      rpy="0 0 0" />
+    <mass
+      value="0.0114267079612173" />
+    <inertia
+      ixx="9.93716942507501E-07"
+      ixy="-5.79591884295001E-23"
+      ixz="1.27233188660228E-17"
+      iyy="9.93716942507501E-07"
+      iyz="-1.15125097717269E-17"
+      izz="1.0759637694368E-06" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_R1.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_R1.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="wheel_RJ1"
+  type="continuous">
+  <origin
+    xyz="-0.0275 -0.005 0.013"
+    rpy="-1.5708 0 0" />
+  <parent
+    link="body" />
+  <child
+    link="wheel_R1" />
+  <axis
+    xyz="0 0 1" />
+</joint>
+<link
+  name="wheel_R2">
+  <inertial>
+    <origin
+      xyz="-5.89805981832114E-17 3.46944695195361E-18 -0.0303082888568349"
+      rpy="0 0 0" />
+    <mass
+      value="0.0114267079612173" />
+    <inertia
+      ixx="9.93716942507502E-07"
+      ixy="-3.75643395682769E-22"
+      ixz="1.4972619190029E-17"
+      iyy="9.93716942507502E-07"
+      iyz="-8.3826884030546E-18"
+      izz="1.07596376943681E-06" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_R2.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/wheel_R2.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="wheel_RJ2"
+  type="continuous">
+  <origin
+    xyz="0.0275 -0.005 0.013"
+    rpy="-1.5708 -0.00018056 0" />
+  <parent
+    link="body" />
+  <child
+    link="wheel_R2" />
+  <axis
+    xyz="0 0 1" />
+</joint>
+<link
+  name="lidar">
+  <inertial>
+    <origin
+      xyz="0 1.89580779882133E-19 0.00382014388489209"
+      rpy="0 0 0" />
+    <mass
+      value="0.000655022068273471" />
+    <inertia
+      ixx="8.77065641646922E-09"
+      ixy="-1.34506811361043E-41"
+      ixz="1.82374187768398E-41"
+      iyy="8.77065641646922E-09"
+      iyz="-4.5783991086801E-25"
+      izz="1.5208646385569E-08" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/lidar.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/lidar.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="lidar_joint"
+  type="fixed">
+  <origin
+    xyz="0.0275 0 0.028"
+    rpy="0 0 0" />
+  <parent
+    link="body" />
+  <child
+    link="lidar" />
+  <axis
+    xyz="0 0 0" />
+</joint>
+<link
+  name="camera">
+  <inertial>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <mass
+      value="0" />
+    <inertia
+      ixx="0"
+      ixy="0"
+      ixz="0"
+      iyy="0"
+      iyz="0"
+      izz="0" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/camera.STL" />
+    </geometry>
+    <material
+      name="">
+      <color
+        rgba="1 1 1 1" />
+    </material>
+  </visual>
+  <collision>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <mesh
+        filename="package://wheel_robot/meshes/camera.STL" />
+    </geometry>
+  </collision>
+</link>
+<joint
+  name="camera_joint"
+  type="fixed">
+  <origin
+    xyz="0.0304999999999997 0 0.0250000000000006"
+    rpy="0 0 0" />
+  <parent
+    link="body" />
+  <child
+    link="camera" />
+  <axis
+    xyz="0 0 0" />
+</joint>
+</robot>
